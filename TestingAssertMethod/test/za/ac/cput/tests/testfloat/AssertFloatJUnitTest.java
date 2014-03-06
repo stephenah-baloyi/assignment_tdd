@@ -1,0 +1,50 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package za.ac.cput.tests.testfloat;
+
+import org.junit.*;
+import static org.junit.Assert.*;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import za.ac.cput.testingassertmethods.appassertfloat.AssertFloat;
+import za.ac.cput.testingassertmethods.appassertfloat.config.AppConfigFloat;
+
+/**
+ *
+ * @author Rhulani Steff Baloyi
+ */
+public class AssertFloatJUnitTest {
+    public static ApplicationContext ctx;
+    public static AssertFloat appFloat;
+    
+    public AssertFloatJUnitTest() {
+    }
+
+    @BeforeClass
+    public static void setUpClass() throws Exception {
+        ctx = new AnnotationConfigApplicationContext(AppConfigFloat.class);
+        appFloat = (AssertFloat) ctx.getBean("floats");
+    }
+
+    @AfterClass
+    public static void tearDownClass() throws Exception {
+    }
+    
+    @Before
+    public void setUp() {
+    }
+    
+    @After
+    public void tearDown() {
+    }
+    // TODO add test methods here.
+    // The methods must be annotated with annotation @Test. For example:
+    //
+    @Test
+    public void testAssertFloat() {
+            
+        Assert.assertEquals(6.1, appFloat.assertFloats(2.1,3.6),0.5);
+    }
+}
